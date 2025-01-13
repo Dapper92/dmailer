@@ -59,15 +59,19 @@ jobs:
 
       - run: ls -R my-artifact
 
-      - name: "send an email notification for the latest version of image to be deployed"
+        name: send-email
+      
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
+      - name: Send Email via Gmail
         uses: dawidd6/action-send-mail@v3
-        with: 
-           server_address: smtp.gmail.com
-           server_port: 465
-           secure: true
-           username: oladapper@gmail.com
-           password: ${{secrets.EMAIL_PASSWORD}}
-           subject: "docker image deployed"
-           to: theoafactor@gmail.com
-           from: dapo lawal
+        with:
+          smtp-server: smtp.gmail.com
+          smtp-port: 587
+          from: ${{ secrets.GMAIL_EMAIL }}
+          to: recipient@example.com
+          subject: 'Test Email'
+          body: 'This is a test email sent from GitHub Actions.'
+          username: ${{ secrets.GMAIL_EMAIL }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}  # Use the application-specific password
