@@ -58,20 +58,20 @@ jobs:
           merge-multiple: true
 
       - run: ls -R my-artifact
-
-        name: send-email
-      
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Send Email via Gmail
-        uses: dawidd6/action-send-mail@v3
+      - name: Send email
+        uses: dawidd6/action-send-mail@v4
         with:
-          smtp-server: smtp.gmail.com
-          smtp-port: 587
-          from: ${{ secrets.GMAIL_EMAIL }}
-          to: recipient@example.com
-          subject: 'Test Email'
-          body: 'This is a test email sent from GitHub Actions.'
-          username: ${{ secrets.GMAIL_EMAIL }}
-          password: ${{ secrets.GMAIL_APP_PASSWORD }}  # Use the application-specific password
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL }}
+          password: ${{ secrets.PASSWORD }}
+          subject: "GitHub Action Notification"
+          body: "Hello! This is a test email sent from GitHub Actions. I built artifact and download it"
+          to: "theoafactor@gmail.com"
+          from: ${{ secrets.EMAIL }}
+          secure: true # Set to false for non-TLS/SSL connections
+          tls: true
+
+     
+
+
