@@ -34,3 +34,27 @@ jobs:
 
       - name: Push image to Docker Hub
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/practice-image:1
+
+        # Upload artifact  
+      - name: Create a File
+        run: echo "hello from Build job" > file-Build.txt
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact-Build
+          path: file-Build.txt
+
+
+  Deploy:
+    needs: Build  # Corrected dependency to Build job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download All Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: my-artifact
+          pattern: my-artifact-*
+          merge-multiple: true
+
+      - run: ls -R my-artifact
