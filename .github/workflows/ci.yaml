@@ -58,3 +58,16 @@ jobs:
           merge-multiple: true
 
       - run: ls -R my-artifact
+
+      - name: "send an email notification for the latest version of image to be deployed"
+
+        uses: dawidd6/action-send-mail@v3
+        with: 
+           server_address: smtp.gmail.com
+           server_port: 465
+           secure: true
+           username: oladapper@gmail.com
+           password: ${{secrets.EMAIL_PASSWORD}}
+           subject: "docker image deployed"
+           to: theoafactor@gmail.com
+           from: dapo lawal
