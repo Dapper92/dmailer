@@ -61,16 +61,16 @@ jobs:
         env:
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
         run: |
-            # git config --global user.email "oladapper@gmail.com"
-            # git config --global user.name "oladapper92"
-            # git clone https://github.com/dapper92/test-mailer.git dmailer2
-            # cd dmailer2/templates
-            # sed -i 's/practice-image:1/practice-image2/' deployment.yaml
-            # cat deployment.yaml
-            # git remote add dmailer2 https://x-access-token:${{ secrets.TOKEN_GITHUB }}@github.com/Oluwaseun186/doct.git
-            # git add .
-            # git commit -m "Updated helm 1"
-            # git push https://adewumibode7:${TOKEN_GITHUB}@github.com/Oluwaseun186/doct origin
+            git config --global user.email "oladapper@gmail.com"
+            git config --global user.name "oladapper92"
+            git clone https://github.com/dapper92/test-mailer.git dmailer2
+            cd dmailer2/templates
+            sed -i 's/practice-image:1/practice-image2/' deployment.yaml
+            cat deployment.yaml
+            git remote add dmailer2 https://x-access-token:${{ secrets.TOKEN_GITHUB }}@github.com/Oluwaseun186/doct.git
+            git add .
+            git commit -m "Updated helm 1"
+            git push https://adewumibode7:${TOKEN_GITHUB}@github.com/Oluwaseun186/doct origin
 
 
         # Upload artifact  
