@@ -1,11 +1,11 @@
 # Use an official Node.js runtime as a parent image
-FROM node:20-slim
+FROM node:18
 
 # Set the working directory inside the container
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json (if available) to the container
-COPY package*.json ./
+COPY package.json .
 
 # Install dependencies inside the container
 RUN npm install
